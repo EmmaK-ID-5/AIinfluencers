@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The AI Influencers are back | BTG+</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --color-yellow:       #FFC407;
+      --color-black:        #000000;
+      --color-white:        #FFFFFF;
+      --color-yellow-dim:   rgba(255, 196, 7, 0.15);
+      --color-yellow-faint: rgba(255, 196, 7, 0.08);
+      --color-black-soft:   rgba(0, 0, 0, 0.55);
+      --color-black-muted:  rgba(0, 0, 0, 0.35);
+      --color-white-soft:   rgba(255, 255, 255, 0.75);
+      --color-white-muted:  rgba(255, 255, 255, 0.45);
+
+      --font-family:        'Montserrat', sans-serif;
+
+      --space-xs:   6px;
+      --space-sm:   12px;
+      --space-md:   20px;
+      --space-lg:   32px;
+      --space-xl:   48px;
+      --space-2xl:  80px;
+
+      --radius-sm:     3px;
+      --radius-md:     8px;
+      --radius-lg:     14px;
+      --radius-pill:   999px;
+      --radius-circle: 50%;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-white);
+      color: var(--color-black);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ============ HEADER ============ */
+    .hero {
+      position: relative;
+      background: var(--color-black);
+      color: var(--color-white);
+      padding: var(--space-2xl) 50px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 420px;
+      height: 420px;
+      border-radius: var(--radius-circle);
+      background: var(--color-yellow-dim);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: var(--radius-circle);
+      background: var(--color-yellow-faint);
+      z-index: 0;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--color-yellow);
+      color: var(--color-black);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 820px;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero h1 .highlight {
+      color: var(--color-yellow);
+    }
+
+    .hero-bar {
+      width: 60px;
+      height: 4px;
+      background: var(--color-yellow);
+      border-radius: 2px;
+      margin: var(--space-md) 0;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--color-white-soft);
+      max-width: 720px;
+      font-weight: 400;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .meta-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-sm);
+      color: var(--color-white);
+    }
+
+    /* ============ MAIN ============ */
+    main {
+      padding: var(--space-2xl) 50px;
+      background: var(--color-white);
+    }
+
+    .intro {
+      font-size: 1.15rem;
+      font-weight: 500;
+      max-width: 820px;
+      margin-bottom: var(--space-xl);
+      color: var(--color-black);
+    }
+
+    .intro .emoji { font-size: 1.4rem; }
+
+    /* Section titles */
+    .section {
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .section-title .icon-block {
+      width: 38px;
+      height: 38px;
+      background: var(--color-yellow);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .section-title h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-black);
+    }
+
+    .section p {
+      max-width: 820px;
+      margin-bottom: var(--space-md);
+      color: var(--color-black-soft);
+    }
+
+    .section p strong { color: var(--color-black); font-weight: 700; }
+
+    /* ============ WHY RELAUNCH CARDS ============ */
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .reason-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-black);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+
+    .reason-card:hover { transform: translateY(-4px); }
+
+    .reason-card .emoji {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--color-yellow);
+      border-radius: var(--radius-md);
+      font-size: 1.4rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .reason-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-xs);
+    }
+
+    .reason-card p {
+      font-size: 0.9rem;
+      color: var(--color-black-soft);
+      margin-bottom: 0;
+    }
+
+    /* ============ WHAT'S DIFFERENT ============ */
+    .diff-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-md) 0 0;
+    }
+
+    .diff-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .diff-list li:last-child { border-bottom: none; }
+
+    .diff-list .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-circle);
+      background: var(--color-yellow);
+      margin-top: 10px;
+      flex-shrink: 0;
+    }
+
+    .diff-list .copy { max-width: 760px; }
+
+    .diff-list .copy strong {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .diff-list .copy span {
+      font-size: 0.95rem;
+      color: var(--color-black-soft);
+    }
+
+    /* ============ GOALS BAND (black) ============ */
+    .goals {
+      background: var(--color-black);
+      color: var(--color-white);
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .goals::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: var(--color-yellow-dim);
+      border-radius: var(--radius-circle);
+    }
+
+    .goals-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      position: relative;
+    }
+
+    .goals-header .icon-block {
+      width: 38px;
+      height: 38px;
+      background: var(--color-yellow);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .goals-header h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-white);
+    }
+
+    .goals-header h2 .highlight { color: var(--color-yellow); }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-md);
+      position: relative;
+    }
+
+    .goal {
+      padding: var(--space-md);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-md);
+    }
+
+    .goal .emoji {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .goal p {
+      font-size: 0.8rem;
+      color: var(--color-white-soft);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ============ STEPS ============ */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .step-card {
+      background: var(--color-yellow);
+      color: var(--color-black);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      position: relative;
+    }
+
+    .step-card .number {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+
+    .step-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-xs);
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-black);
+      margin: 0;
+      max-width: 100%;
+    }
+
+    /* ============ CTA ============ */
+    .cta {
+      background: var(--color-black);
+      color: var(--color-white);
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      margin-top: var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .cta-text h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-xs);
+    }
+
+    .cta-text h3 .highlight { color: var(--color-yellow); }
+
+    .cta-text p {
+      color: var(--color-white-soft);
+      max-width: 540px;
+      margin: 0;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: var(--color-yellow);
+      color: var(--color-black);
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--color-yellow);
+      color: var(--color-black);
+      padding: var(--space-lg) 50px;
+      text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .hero, main { padding: var(--space-xl) 24px; }
+      .reasons, .steps { grid-template-columns: 1fr; }
+      .goals-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta { flex-direction: column; align-items: flex-start; }
+      footer { padding: var(--space-md) 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-inner">
+        <span class="hero-badge">🚀 Programme Relaunch</span>
+        <h1>The <span class="highlight">AI Influencers</span> are back. Here's what they are, and why it matters now. 🤖✨</h1>
+        <div class="hero-bar"></div>
+        <p class="hero-sub">Everyone talks about AI. Fewer people show you how they actually use it. The AI Influencer Programme is built to close that gap, right from inside your Viva Engage feed.</p>
+        <div class="hero-meta">
+          <span class="meta-tag">👥 All OLIVER + BTG+</span>
+          <span class="meta-tag">📍 Insiders Academy</span>
+          <span class="meta-tag">🎓 L&amp;D</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+      <p class="intro"><span class="emoji">👋</span> Hi Insider — if you've ever wondered <strong>"how are other people actually using AI around here?"</strong>, this is for you.</p>
+
+      <!-- WHAT IT IS -->
+      <section class="section">
+        <div class="section-title">
+          <div class="icon-block">💡</div>
+          <h2>What it is</h2>
+        </div>
+        <p>A network of colleagues across <strong>OLIVER and BTG+</strong> who use AI in their day-to-day roles and share their experience on <strong>Viva Engage Storylines</strong>. Not AI experts. Not tool reviewers. Real colleagues showing real workflows, prompts, lessons learned and use cases from the work they already do. 💬</p>
+        <p>You choose which Influencers to follow based on what is relevant to your role, team or region. Their posts then land in your Viva Engage feed, so practical AI examples find <em>you</em>, instead of the other way round. 📥</p>
+      </section>
+
+      <!-- WHY RELAUNCH -->
+      <section class="section">
+        <div class="section-title">
+          <div class="icon-block">🔄</div>
+          <h2>Why we are relaunching it</h2>
+        </div>
+        <p>The appetite for AI knowledge has grown faster than any single training programme can keep up with. So we're bringing the Programme back, with sharper focus and more momentum.</p>
+
+        <div class="reasons">
+          <div class="reason-card">
+            <div class="emoji">🧠</div>
+            <h3>Peer learning sticks</h3>
+            <p>Hearing how a colleague solved a brief in half the time is more useful than any generic AI course.</p>
+          </div>
+          <div class="reason-card">
+            <div class="emoji">💎</div>
+            <h3>The best examples are already here</h3>
+            <p>They just need a visible place to be shared, and a community that celebrates them.</p>
+          </div>
+          <div class="reason-card">
+            <div class="emoji">🚪</div>
+            <h3>Community lowers the barrier</h3>
+            <p>Seeing colleagues experiment openly, including the misses, makes it easier for everyone else to start.</p>
+          </div>
+          <div class="reason-card">
+            <div class="emoji">🛡️</div>
+            <h3>Responsible AI needs role models</h3>
+            <p>Our Influencers show how to use AI in a way that respects clients, data and craft.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT'S DIFFERENT -->
+      <section class="section">
+        <div class="section-title">
+          <div class="icon-block">✨</div>
+          <h2>What is different this time</h2>
+        </div>
+        <ul class="diff-list">
+          <li>
+            <span class="dot"></span>
+            <div class="copy">
+              <strong>🎯 Practical, usable content</strong>
+              <span>Prompts you can copy, workflows you can borrow, before-and-afters you can learn from.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot"></span>
+            <div class="copy">
+              <strong>🔎 Easier to find your match</strong>
+              <span>Browse Influencers by discipline, region or client type, and follow the ones closest to your world.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot"></span>
+            <div class="copy">
+              <strong>🔁 A stronger feedback loop</strong>
+              <span>The content you ask for shapes what gets shared next. Your reactions and replies are the fuel.</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- GOALS -->
+      <section class="section">
+        <div class="goals">
+          <div class="goals-header">
+            <div class="icon-block">🎯</div>
+            <h2>What the Programme is <span class="highlight">designed to do</span></h2>
+          </div>
+          <div class="goals-grid">
+            <div class="goal">
+              <span class="emoji">📣</span>
+              <p>Increase AI knowledge sharing across OLIVER and BTG+</p>
+            </div>
+            <div class="goal">
+              <span class="emoji">🤝</span>
+              <p>Strengthen collaboration across teams and regions</p>
+            </div>
+            <div class="goal">
+              <span class="emoji">🏆</span>
+              <p>Build a visible community of AI champions</p>
+            </div>
+            <div class="goal">
+              <span class="emoji">🧪</span>
+              <p>Encourage responsible, confident experimentation</p>
+            </div>
+            <div class="goal">
+              <span class="emoji">🌍</span>
+              <p>Make AI more accessible for everyone, not just early adopters</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW TO GET INVOLVED -->
+      <section class="section">
+        <div class="section-title">
+          <div class="icon-block">🚀</div>
+          <h2>How to get involved</h2>
+        </div>
+        <div class="steps">
+          <div class="step-card">
+            <div class="number">01</div>
+            <h4>📲 Open Viva Engage</h4>
+            <p>Head straight to Storylines, where your Influencers post.</p>
+          </div>
+          <div class="step-card">
+            <div class="number">02</div>
+            <h4>👀 Browse &amp; follow</h4>
+            <p>Pick the Influencers whose work is closest to yours.</p>
+          </div>
+          <div class="step-card">
+            <div class="number">03</div>
+            <h4>🛠️ Try &amp; share back</h4>
+            <p>Test something they shared. Reply with how it went.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta">
+        <div class="cta-text">
+          <h3>Join the <span class="highlight">community</span> 🎉</h3>
+          <p>The more you engage, the more useful your feed becomes, and the stronger the Programme gets for everyone else. Follow your first three AI Influencers today.</p>
+        </div>
+        <a class="cta-button" href="#">Follow on Viva Engage →</a>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      ⚡ OLIVER Learning &amp; Development  ·  Insiders Academy
+    </footer>
+
+  </div>
+</body>
+</html>
